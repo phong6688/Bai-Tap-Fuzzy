@@ -295,7 +295,33 @@ export default function Checkout() {
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <i className="iconsax" data-icon={method.icon} style={{ color: paymentMethod === method.id ? '#000' : '#fff', fontSize: '20px' }}></i>
+                    {method.icon === 'wallet-money' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: paymentMethod === method.id ? '#000' : '#fff' }}>
+                        <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12" y2="18.01"></line>
+                        <line x1="12" y1="6" x2="12" y2="6.01"></line>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                    )}
+                    {method.icon === 'card' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: paymentMethod === method.id ? '#000' : '#fff' }}>
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                      </svg>
+                    )}
+                    {method.icon === 'mobile' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: paymentMethod === method.id ? '#000' : '#fff' }}>
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12" y2="18.01"></line>
+                      </svg>
+                    )}
+                    {method.icon === 'direct' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: paymentMethod === method.id ? '#000' : '#fff' }}>
+                        <polyline points="16 3 21 3 21 8"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                        <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path>
+                      </svg>
+                    )}
                   </div>
                   <div className="payment-text" style={{ flexGrow: 1 }}>
                     <h4 style={{ color: '#fff', fontSize: '15px', fontWeight: '600', margin: 0 }}>{method.label}</h4>

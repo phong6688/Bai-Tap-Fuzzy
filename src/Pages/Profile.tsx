@@ -166,8 +166,11 @@ export default function Profile() {
             </li>
             <li>
               <a href="#/admin" className="profile-box">
-                <div className="profile-img" style={{ backgroundColor: 'rgba(229, 185, 59, 0.1)' }}>
-                  <i className="iconsax icon" data-icon="setting-5" style={{ color: '#e5b93b' }}></i>
+                <div className="profile-img" style={{ backgroundColor: 'rgba(229, 185, 59, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e5b93b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
                 </div>
                 <div className="profile-details">
                   <h4 style={{ color: '#e5b93b' }}>Quản trị (Admin)</h4>
@@ -177,8 +180,12 @@ export default function Profile() {
             </li>
             <li className="border-bottom-0">
               <a href="#/logout" onClick={handleLogout} className="profile-box">
-                <div className="profile-img" style={{ backgroundColor: 'rgba(255, 77, 79, 0.1)' }}>
-                  <i className="iconsax icon" data-icon="logout" style={{ color: '#ff4d4f' }}></i>
+                <div className="profile-img" style={{ backgroundColor: 'rgba(255, 77, 79, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff4d4f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
                 </div>
                 <div className="profile-details">
                   <h4 style={{ color: '#ff4d4f' }}>Log Out</h4>

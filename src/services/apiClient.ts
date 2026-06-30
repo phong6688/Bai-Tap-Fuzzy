@@ -39,6 +39,9 @@ export interface Address {
 // Simulated delay helper
 const delay = (ms: number = 500) => new Promise(resolve => setTimeout(resolve, ms));
 
+const isLocalhost = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
 // Retrieve data from secure LocalStorage
 const getLocalStorageItem = (key: string): any => {
   const data = localStorage.getItem(key);
@@ -493,13 +496,15 @@ export const apiClient = {
     }
 
     // Try posting to Next.js API in background if backend is running (fully decoupled)
-    try {
-      fetch('http://localhost:3001/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newOrder)
-      }).catch(() => {});
-    } catch(e) {}
+    if (isLocalhost) {
+      try {
+        fetch('http://localhost:3001/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newOrder)
+        }).catch(() => {});
+      } catch(e) {}
+    }
 
     // Clear cart after placing order
     this.clearCart();
@@ -522,13 +527,15 @@ export const apiClient = {
       }
 
       // Update Next.js backend API if running
-      try {
-        fetch(`http://localhost:3001/api/orders/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status })
-        }).catch(() => {});
-      } catch(e) {}
+      if (isLocalhost) {
+        try {
+          fetch(`http://localhost:3001/api/orders/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status })
+          }).catch(() => {});
+        } catch(e) {}
+      }
     }
   },
   deleteOrder(id: string): void {
@@ -541,11 +548,13 @@ export const apiClient = {
     localStorage.setItem('fuzzy_orders', JSON.stringify(orders));
     
     // Call backend DELETE endpoint if running
-    try {
-      fetch(`http://localhost:3001/api/orders/${id}`, {
-        method: 'DELETE'
-      }).catch(() => {});
-    } catch(e) {}
+    if (isLocalhost) {
+      try {
+        fetch(`http://localhost:3001/api/orders/${id}`, {
+          method: 'DELETE'
+        }).catch(() => {});
+      } catch(e) {}
+    }
   },
   getUsers(): User[] {
     return getLocalStorageItem('fuzzy_users') || [];
@@ -607,13 +616,15 @@ export const apiClient = {
       localStorage.setItem('fuzzy_orders', JSON.stringify(orders));
       
       // Update Next.js backend API if running
-      try {
-        fetch(`http://localhost:3001/api/orders/${orderId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(orders[idx])
-        }).catch(() => {});
-      } catch(e) {}
+      if (isLocalhost) {
+        try {
+          fetch(`http://localhost:3001/api/orders/${orderId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orders[idx])
+          }).catch(() => {});
+        } catch(e) {}
+      }
     }
   },
   updateOrder(orderId: string, orderData: Partial<Order>): void {
@@ -634,13 +645,15 @@ export const apiClient = {
       localStorage.setItem('fuzzy_orders', JSON.stringify(orders));
       
       // Update Next.js backend API if running
-      try {
-        fetch(`http://localhost:3001/api/orders/${orderId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(orders[idx])
-        }).catch(() => {});
-      } catch(e) {}
+      if (isLocalhost) {
+        try {
+          fetch(`http://localhost:3001/api/orders/${orderId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orders[idx])
+          }).catch(() => {});
+        } catch(e) {}
+      }
     }
   }
 };
