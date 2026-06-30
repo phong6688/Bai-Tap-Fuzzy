@@ -1,0 +1,87 @@
+/* FORCE HTML AND BODY TO ACT AS A FLEX CONTAINER TO CENTER THE APP */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  background-color: #09121c !important; /* Neutral dark background for desktop */
+  overflow-x: hidden !important; /* Prevent browser window horizontal scroll */
+}
+
+/* FORCE THE REACT CONTAINER ROOT TO ACT AS A CENTERED MOBILE VIEWPORT */
+#root {
+  width: 100% !important;
+  max-width: 600px !important;
+  min-height: 100vh !important;
+  background-color: #122636 !important; /* Fuzzy app primary theme background */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6) !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  overflow-x: hidden !important; /* Clip any horizontal overflows inside the app */
+}
+
+/* Prevent elements from stretching root width */
+#root > * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ALIGN FIXED POSITIONED ELEMENTS (like Navbars, Footers, Popups) WITH THE CENTERED MOBILE APP VIEWPORT */
+.navbar-menu, 
+.pay-popup, 
+.footer-modal, 
+.offcanvas-bottom, 
+.fixed-cart-btn,
+.addtohome-popup {
+  position: fixed !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure background transitions are smooth */
+body, #root {
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive adjustment for actual mobile screens */
+@media (max-width: 600px) {
+  #root {
+    box-shadow: none !important;
+  }
+}
+
+/* PROFILE PAGE COLOR OPTIMIZATION FOR DARK THEME */
+.profile-header h3 {
+  color: #ffffff !important;
+}
+.profile-name h4 {
+  color: #ffffff !important;
+}
+.profile-name .edit-icon svg {
+  --Iconsax-Color: #ffffff !important;
+}
+.profile-box .profile-img {
+  background-color: #183044 !important;
+  border: 1px solid #203342 !important;
+}
+.profile-box .profile-img svg {
+  --Iconsax-Color: #e5b93b !important; /* Gold/yellow icons */
+}
+.profile-box .profile-details h4 {
+  color: #ffffff !important;
+}
+.profile-box .profile-details h5 {
+  color: #abb8c3 !important; /* Light gray description */
+}
